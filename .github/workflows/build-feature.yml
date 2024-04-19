@@ -1,0 +1,25 @@
+name: build and test feature branches
+on: 
+ push: 
+  branches: 
+   - feature/*
+jobs:
+  build-feature:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v4
+     - name: pull and checkout from git repository
+
+       run: |
+         echo "bienvenido devsecops"
+
+     - name: setup java-17
+       uses: actions/setup-java@v3
+       with:
+        distribution: 'temurin'
+        java-version: '17'
+
+     - name: buid with maven
+       run: |
+        mvnw clean install
+        echo "buid with maven"
